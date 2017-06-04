@@ -1,0 +1,56 @@
+.av-table-medicos-col-id, .av-table-medicos-col-icons {
+	width: 60px;
+	text-align: center;
+}
+
+.av-table-medicos-col-acoes {
+	width: 30px;
+	text-align: center;
+}
+
+
+.av-table-procedimentos-col-id, .av-table-procedimentos-col-icons {
+	width: 60px;
+	text-align: center;
+}
+
+.av-table-procedimentos-col-acoes {
+	width: 30px;
+	text-align: center;
+}
+
+.av-table-procedimentos-col-codigo {
+	width: 120px;
+	text-align: left;
+}
+
+.av-table-guias-col-id, .av-table-guias-col-icons {
+	width: 60px;
+	text-align: center;
+}
+
+.av-table-guias-col-acoes {
+	width: 30px;
+	text-align: center;
+}
+
+.av-table-proc-col-id, .av-table-proc-col-icons {
+	width: 60px;
+	text-align: center;
+}
+
+.av-table-proc-col-acoes {
+	width: 20px;
+	text-align: center;
+}
+
+.av-table-proc-col-codigo {
+	width: 50px;
+	text-align: center;
+}
+
+.av-table-proc-col-descricao {
+	width: 60px;
+	text-align: center;
+}
+

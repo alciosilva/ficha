@@ -1,0 +1,394 @@
+<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="album">Album</label>
+					<select id="album" class="form-control" th:field="*{album}">
+						<option value="">Selecione o album</option>
+						<option th:each="album : ${albums}" th:value="${album}" th:text="#{|album.${album}|}"></option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		
+			<form method="POST" class="form-vertical  js-form-loading"
+						th:object="${endereco}" th:action="@{/clientes/novo}">
+						<div class="alert  alert-danger  alert-dismissible" role="alert"
+							th:if="${#fields.hasAnyErrors()}">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<th:block th:each="error : ${#fields.detailedErrors()}">
+								<div>
+									<i class="fa  fa-exclamation-circle"></i> <span
+										th:text="${error.message}"></span>
+								</div>
+							</th:block>
+						</div>
+
+						<div class="alert  alert-success"
+							th:if="${not #strings.isEmpty(mensagem)}">
+							<span th:text="${mensagem}"></span>
+						</div>
+
+						<input type="hidden" th:field="*{id}" />
+
+						<div class="row">
+							<div class="col-sm-5">
+								<div class="form-group">
+									<label>Endereco</label> <input type="text" class="form-control"
+										th:field="*{logradouro}" />
+								</div>
+								<div class="form-group">
+									<label>Numero</label> <input type="text" class="form-control"
+										th:field="*{numero}" />
+								</div>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<button class="btn  btn-primary" type="submit">Salvar
+								endereco</button>
+						</div>
+					</form>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="form-group" >
+									<label>Fone</label> <input type="text" class="form-control"
+										th:field="*{fone}" />
+								</div>
+								<div class="form-group">
+									<label>Email</label> <input type="text" class="form-control"
+										th:field="*{email}" />
+								</div>
+								<div class="form-group">
+									<label>Endereco</label> <input type="text" class="form-control"
+									th:object="${endereco}" th:field="*{logradouro}" />
+								</div>
+								<div class="form-group">
+									<label>Numero</label> <input type="text" class="form-control"
+									th:object="${endereco}" th:field="*{numero}" />
+								</div>
+								
+								
+								
+								
+								
+								
+								
+	public String getDataAtual() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date dataAtual = new Date();
+		return dateFormat.format(dataAtual);
+
+	}
+
+	public String getDataCad() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		dataCad = new Date();
+		return dateFormat.format(dataCad);
+	}
+
+PESQUISAR
+								
+		<th class="av-table-solicitantes-col-id"
+								sec:authorize="hasRole('ROLE_CADASTRAR')">ID</th>
+		
+		<td th:text="${solicitante.id}" class="text-center"
+								sec:authorize="hasRole('ROLE_CADASTRAR')"></td>
+
+PESQUISAR		
+
+
+package com.tec.os.model;
+
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+
+@Entity
+public class Guia {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotNull(message = "O Nome do paciente é obrigatorio")
+	@NotEmpty(message = "O Nome do paciente é obrigatorio")
+	private Integer idExecutantes;
+    private Integer idSolicitantes;
+    private Integer idProcedimentos;
+    private Integer idMedicos;
+    private String descricaoProcedimentos;
+    private String numeroProcedimentos;
+    private String numeroExecutantes;
+    private String nomeExecutantes;
+    private String numeroSolicitantes;
+    private String nomeSolicitantes;
+    private String Medicos;
+    private String crmMedicos;
+    private String cpfMedicos;
+    private String ufMedicos;
+    private String conselhoMedicos;
+    private String Pacientes;
+    private String indicacao;
+    private Date dataGuia;
+    private Integer quantidade;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Integer getIdExecutantes() {
+		return idExecutantes;
+	}
+	public void setIdExecutantes(Integer idExecutantes) {
+		this.idExecutantes = idExecutantes;
+	}
+	public Integer getIdSolicitantes() {
+		return idSolicitantes;
+	}
+	public void setIdSolicitantes(Integer idSolicitantes) {
+		this.idSolicitantes = idSolicitantes;
+	}
+	public Integer getIdProcedimentos() {
+		return idProcedimentos;
+	}
+	public void setIdProcedimentos(Integer idProcedimentos) {
+		this.idProcedimentos = idProcedimentos;
+	}
+	public Integer getIdMedicos() {
+		return idMedicos;
+	}
+	public void setIdMedicos(Integer idMedicos) {
+		this.idMedicos = idMedicos;
+	}
+	public String getDescricaoProcedimentos() {
+		return descricaoProcedimentos;
+	}
+	public void setDescricaoProcedimentos(String descricaoProcedimentos) {
+		this.descricaoProcedimentos = descricaoProcedimentos;
+	}
+	public String getNumeroProcedimentos() {
+		return numeroProcedimentos;
+	}
+	public void setNumeroProcedimentos(String numeroProcedimentos) {
+		this.numeroProcedimentos = numeroProcedimentos;
+	}
+	public String getNumeroExecutantes() {
+		return numeroExecutantes;
+	}
+	public void setNumeroExecutantes(String numeroExecutantes) {
+		this.numeroExecutantes = numeroExecutantes;
+	}
+	public String getNomeExecutantes() {
+		return nomeExecutantes;
+	}
+	public void setNomeExecutantes(String nomeExecutantes) {
+		this.nomeExecutantes = nomeExecutantes;
+	}
+	public String getNumeroSolicitantes() {
+		return numeroSolicitantes;
+	}
+	public void setNumeroSolicitantes(String numeroSolicitantes) {
+		this.numeroSolicitantes = numeroSolicitantes;
+	}
+	public String getNomeSolicitantes() {
+		return nomeSolicitantes;
+	}
+	public void setNomeSolicitantes(String nomeSolicitantes) {
+		this.nomeSolicitantes = nomeSolicitantes;
+	}
+	public String getMedicos() {
+		return Medicos;
+	}
+	public void setMedicos(String medicos) {
+		Medicos = medicos;
+	}
+	public String getCrmMedicos() {
+		return crmMedicos;
+	}
+	public void setCrmMedicos(String crmMedicos) {
+		this.crmMedicos = crmMedicos;
+	}
+	public String getCpfMedicos() {
+		return cpfMedicos;
+	}
+	public void setCpfMedicos(String cpfMedicos) {
+		this.cpfMedicos = cpfMedicos;
+	}
+	public String getUfMedicos() {
+		return ufMedicos;
+	}
+	public void setUfMedicos(String ufMedicos) {
+		this.ufMedicos = ufMedicos;
+	}
+	public String getConselhoMedicos() {
+		return conselhoMedicos;
+	}
+	public void setConselhoMedicos(String conselhoMedicos) {
+		this.conselhoMedicos = conselhoMedicos;
+	}
+	public String getPacientes() {
+		return Pacientes;
+	}
+	public void setPacientes(String pacientes) {
+		Pacientes = pacientes;
+	}
+	public String getIndicacao() {
+		return indicacao;
+	}
+	public void setIndicacao(String indicacao) {
+		this.indicacao = indicacao;
+	}
+	public Date getDataGuia() {
+		return dataGuia;
+	}
+	public void setDataGuia(Date dataGuia) {
+		this.dataGuia = dataGuia;
+	}
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Guia other = (Guia) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+	
+    
+
+    
+
+}
+
+
+package com.tec.os.controller;
+
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.tec.os.model.Guia;
+import com.tec.os.repository.GuiaRepository;
+import com.tec.os.repository.filter.GuiaFilter;
+
+@Controller
+@RequestMapping("/guias")
+public class GuiasController1 {
+
+	@Autowired
+	private GuiaRepository guias;
+
+	@GetMapping("/novo")
+	public ModelAndView novo(Guia guia) {
+		ModelAndView mv = new ModelAndView("Guia/cadastro-guia");
+		mv.addObject(guia);
+		return mv;
+	}
+
+	@PostMapping("/novo")
+	public ModelAndView salvar(@Valid Guia guia, BindingResult result, RedirectAttributes attributes) {
+		if (result.hasErrors()) {
+			return novo(guia);
+		}
+		guias.save(guia);
+		attributes.addFlashAttribute("mensagem", "Guia salvo com sucesso!");
+		return new ModelAndView("redirect:/guias");
+	}
+
+	@GetMapping
+	public ModelAndView pesquisar(GuiaFilter guiaFilter) {
+		ModelAndView mv = new ModelAndView("Guia/pesquisa-Guia");
+		mv.addObject("guias", guias.findByNome(Optional.ofNullable(guiaFilter.getNome()).orElse("%")));
+		return mv;
+	}
+
+	@GetMapping("/{id}")
+	public ModelAndView editar(@PathVariable Long id) {
+		Guia guia = guias.findOne(id);
+		return novo(guia);
+	}
+
+	@DeleteMapping("/{id}")
+	public String apagar(@PathVariable Long id, RedirectAttributes attributes) {
+		guias.delete(id);
+		attributes.addFlashAttribute("mensagem", "Guia removido com sucesso");
+		return "redirect:/guias";
+	}
+
+}
+
+<div class="col-sm-3">
+						<div class="form-group">
+							<label>CNPJ / CPF DO EXECUTANTE</label> <input type="text"
+								class="form-control" th:field="*{numeroExecutante}" />
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label>NOME DO EXECUTANTE</label> <input type="text"
+								class="form-control" th:field="*{nomeExecutante}" />
+						</div>
+					</div>
+							
+							
+							
+							
+							
+							
+							<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Panel title</h3>
+						</div>
+						<div class="panel-body">Panel content</div>
+					</div>
+				</div>
